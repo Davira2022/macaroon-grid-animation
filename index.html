@@ -2,11 +2,14 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>MACAROONS</title>
+
     <link rel="stylesheet" href="fontawesome/css/all.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/adaptive.css">
+    <link rel="stylesheet" href="dist/style.min.css">
+
+<!--    <script src="https://cdn.jsdelivr.net/npm/less" ></script>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
@@ -41,11 +44,11 @@
                     xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink"
                     width="40px" height="22px">
-                <path fill-rule="evenodd"  fill="rgb(130, 19, 40)"
+                <path fill-rule="evenodd" fill="rgb(130, 19, 40)"
                       d="M0.0,0.0 L39.999,0.0 L39.999,1.999 L0.0,1.999 L0.0,0.0 Z"/>
-                <path fill-rule="evenodd"  fill="rgb(130, 19, 40)"
+                <path fill-rule="evenodd" fill="rgb(130, 19, 40)"
                       d="M0.0,10.0 L39.999,10.0 L39.999,12.0 L0.0,12.0 L0.0,10.0 Z"/>
-                <path fill-rule="evenodd"  fill="rgb(130, 19, 40)"
+                <path fill-rule="evenodd" fill="rgb(130, 19, 40)"
                       d="M0.0,19.999 L39.999,19.999 L39.999,21.999 L0.0,21.999 L0.0,19.999 Z"/>
             </svg>
         </div>
@@ -192,26 +195,36 @@
         <div class="order-image">
             <img src="images/macaroon_tower.png" alt="macaroons">
         </div>
-        <form action="https://webhook.site/56903d86-610c-4e09-959d-3beddf4dab25" method="post">
+        <form action="" id="myForm">
             <h2>Закажите макарун!</h2>
             <div class="form-text">Выберите понравившийся макарун, заполните форму и ожидайте звонка нашего пекаря!</div>
-            <label class="input-titles">
-                Ваш выбор
-                <br>
-                <input type="text" name="items" placeholder="Напишите, что хотите заказать..." class="input-one" required>
-            </label>
-            <label class="input-titles">
-                Заполните данные для заказа
-                <br>
-                <input type="text" name="name" placeholder="Ваше имя" class="input-two" required>
-            </label>
-            <label class="input-titles">
-                <input type="tel" name="phone" placeholder="+375 (__) ___ - __ - __" class="input-three" required>
-            </label>
+
+            <div id="part-one">
+                <label class="input-titles" for="orderDetails">Ваш выбор</label>
+                <input type="text" name="items" placeholder="Напишите, что хотите заказать..." class="input-one"
+                       id="orderDetails">
+                <div class="error-input error-input-one">Необходимо ввести наименование продукта</div>
+            </div>
+
+            <div id="part-two">
+                <label class="input-titles" for="name">Заполните данные для заказа </label>
+                <input type="text" name="name" placeholder="Ваше имя" class="input-two" id="name">
+                <div class="error-input error-input-two">Необходимо ввести Ваше имя</div>
+            </div>
+
+            <div id="part-three">
+                <label class="input-titles" for="phone"></label>
+                <input type="tel" name="phone" placeholder="+375 (__) ___ - __ - __" class="input-three" id="phone">
+                <div class="error-input error-input-three">Необходимо ввести номер Вашего телефона</div>
+            </div>
+
             <div>
-                <button class="btn order-btn">Оформить заказ</button>
+                <button type="button" class="btn order-btn" id="submit">Оформить заказ</button>
             </div>
         </form>
+        <div id="thankYou">
+            <h2>Спасибо за Ваш заказ. <br> Мы скоро свяжемся с Вами!</h2>
+        </div>
         <div class="strawberry-right">
             <img src="images/strawberry_right.png" alt="strawberry">
         </div>
@@ -239,12 +252,34 @@
         <a href="#">
             <div class="present-circle">
                 <div class="present-text">Оформите заказ <br>
-                    и получите подарок!</div>
+                    и получите подарок!
+                </div>
             </div>
             <img src="images/present.png" alt="present">
         </a>
     </div>
 </div>
+
+<div class="loader">
+    <div class="lds-spinner">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+
+
+<script src="jquery-3.6.4.min.js"></script>
+<script src="index.js"></script>
 
 <script>
     document.getElementById('burger').onclick = function () {
