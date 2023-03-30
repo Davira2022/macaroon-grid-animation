@@ -54,7 +54,11 @@ $('#submit').click(function () {
     }
 })
 
-$('.btn').click(event => {
+$('.main-action').click (function () {
+    $('#assortment')[0].scrollIntoView({behavior: 'smooth'});
+});
+
+$('.card-btn').click(event => {
     $('.order')[0].scrollIntoView({behavior: 'smooth'});
     $('#orderDetails')
         .val($(event.target)
